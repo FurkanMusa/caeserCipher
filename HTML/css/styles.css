@@ -17,20 +17,99 @@ h2 {
     font-size: 20px;
 }
 
-input[type="file"],
-input[type="button"],
 button {
-    background-color: #333;
+	background-color: #ff8a00;
     border: none;
     border-radius: 4px;
     color: #fff;
     padding: 8px;
+	margin: 10px;
 }
 
-input[type="file"]:hover,
 button:hover {
-    background-color: #444;
+    background-color: #e52e71;
 }
+
+textarea {
+  resize: none;
+  border: 3px solid #ff8a00;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+textarea:hover {
+    border: 3px solid #e52e71;
+}
+
+/* info butonm */
+
+.text-area {
+  position: relative;
+}
+
+.info-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.info-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: gray;
+  cursor: pointer;
+}
+
+.info-icon span {
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
+
+.info-popup {
+  display: none;
+  position: absolute;
+  top: -5px;
+  left: calc(100% + 10px);
+  width: 200px;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.info-button:hover .info-popup {
+  display: block;
+}
+
+.info-popup::before {
+  content: none;
+  position: absolute;
+  top: -100px;
+  right: 100px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 10px 10px 10px;
+  border-color: transparent transparent white transparent;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Arka plan içün */
 body {

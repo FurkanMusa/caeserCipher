@@ -2,10 +2,11 @@
 <html>
 
 <head>
-	<title>RLE veriComp</title>
+	<title>Ceaser Cipher</title>
 	<link rel="stylesheet" href="css/styles.css" />
 	<script src="js/main.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 	<!-- <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
 	<script defer src="https://pyscript.net/latest/pyscript.js"></script> -->
 	<!-- <py-env>
@@ -18,16 +19,50 @@
 <body>
 	<div class="slider-thumb"></div>
 
-	<h1>RLE Encode and Decode</h1>
-	<h2>Lütfen BMP uzantılı dosyanızı seçin:</h2>
-	<div class="slider-thumb">
-		<input type="file" id="dosya" accept=".bmp">
-		<button type="button" onclick="yukle()">Yükle</button>
+	<h1>Ceaser Cipher</h1>
+	
+	<div class="text-area">
+		<div class="info-button">
+			<div class="info-icon">
+				<span>i</span>
+			</div>
+		<div id="infoRaw" class="info-popup">kaskjdnakjsndajs<br/>kjnkjnkjn<br/>lıjıjl<br/>lkmlkml<br/>lkmlkml<br/>lkmlkml</div>
 	</div>
-	<img id="resim" style="width: 200px; display:none">
-	<canvas id="myCanvas" width="200" height="200" style="display:none">
-		Your browser does not support the HTML5 canvas tag.</canvas>
-	<h1 id="encode" style="display: none;">Encode</h1>
+	<textarea id="raw" rows="4" cols="50" placeholder="Sezarlancak metni buraya giriniz."></textarea>
+	</div>
+	
+
+	<button onClick="encode()">
+	<i class="fa fa-arrow-down"></i> ENCODE <i class="fa fa-arrow-down fa-lock"></i>
+	</button>
+
+
+	
+	<div class="text-area">
+		<div class="info-button">
+			<div class="info-icon">
+				<span>i</span>
+			</div>
+		<div id="infoCip" class="info-popup">örnek info</div>
+	</div>
+	<textarea id="ciphered" rows="4" cols="50" placeholder="Sezarlandın"></textarea>
+	</div>
+	
+	<button onClick="decode()">
+	<i class="fa fa-arrow-down"></i> DECODE <i class="fa fa-unlock"></i>
+	</button>
+	
+	<div class="text-area">
+		<div class="info-button">
+			<div class="info-icon">
+				<span>i</span>
+			</div>
+		<div id="infoDec" class="info-popup">Buraya yazmak istediğiniz metni giriniz.</div>
+	</div>
+	<textarea id="decoded" rows="4" cols="50" placeholder="uno"></textarea>
+	</div>
+	
+	
 	<!-- <div class="container-md" id="test-plot">
 		<div class="pulse">
 			<p style='font-family: monospace sans-serif;'><big><big><big><big>PyScript loading and
