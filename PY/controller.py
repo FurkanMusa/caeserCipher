@@ -2,6 +2,7 @@ import sys
 from PyQt5.QtWidgets import QApplication
 from ui import SumUI
 
+
 class SumController:
     def __init__(self):
         self.app = QApplication(sys.argv)
@@ -23,6 +24,7 @@ class SumController:
 
     def run(self):
         sys.exit(self.app.exec_())
+
 
 if __name__ == '__main__':
     controller = SumController()
