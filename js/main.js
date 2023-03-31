@@ -45,29 +45,26 @@ function decrypt() {
     // frekans analizi
     let letters = countLetters(cryptedText)
     let referance = countLetters(referanceText)
-    const letters_keys = Object.keys(letters)
-    const letters_values = Object.values(letters)
-    const referance_keys = Object.keys(referance)
-    const referance_values = Object.values(referance)
 
-    letters_values, letters_keys = sortTwoArraysDescending(letters_values, letters_keys)
-    referance_values, referance_keys = sortTwoArraysDescending(referance_values, referance_keys)
+    let [letters_values, letters_keys] = sortTwoArraysDescending(Object.values(letters), Object.keys(letters))
+    let [referance_values, referance_keys] = sortTwoArraysDescending(Object.values(referance), Object.keys(referance))
 
-    // console.table(letters)
-    console.log(letters)
-    // console.table(referance)
-
-    let decryptedText = cryptedText
-    console.log("letters_keys.lenght:   "+letters_keys.length)
-    console.log("referance_keys.lenght: "+referance_keys.length)
-    for (let i = 0; i < letters_keys.length; i++) {
-        decryptedText = decryptedText.replace(letters_keys[i], referance_keys[i])
-    }
     
+    let decryptedText = cryptedText
+    let result = ""
+    for (let i = 0; i < decryptedText.length; i++) {
+        if (decryptedText[i] == " " || decryptedText[i] == "\n" || decryptedText[i] == "\t" || decryptedText[i] == "\r") {
+            result += decryptedText[i]
+            
+        } else {
+            result += referance_keys[letters_keys.indexOf(decryptedText[i])] ?? decryptedText[i]
+        }
+
+    }
 
 
     // textareaya yaz
-    document.getElementById("decoded").value = decryptedText
+    document.getElementById("decoded").value = result
 
     // infodan açıklamayı kaldır
     let infoDec = document.getElementById("infoDec")
@@ -81,6 +78,17 @@ function decrypt() {
     decodedText = document.getElementById("decoded").value
     grafikle(countLetters(decodedText), document.getElementById("chartDec"))
 
+    // infodan açıklamayı kaldır
+    let chartRef = document.getElementById("chartRef")
+    for (let node of chartRef.childNodes) {
+        if (node.nodeType === Node.TEXT_NODE) {
+            node.textContent = ""
+        }
+    }
+
+    // analiz dec
+    grafikle(countLetters(referanceText), document.getElementById("chartRef"))
+
     // yüzdeyi yaz
     let rawText = document.getElementById("raw").value
     let similarity = calculateTextSimilarity(rawText, decodedText)
@@ -90,7 +98,6 @@ function decrypt() {
 // Other functions
 function convertToKey(text) {
     let parsedKey = parseInt(text)
-    // console.log("parsed key: "+parsedKey)
     if (isNaN(parsedKey)) {
         parsedKey = 0
         for (let i = 0; i < text.length; i++) {
@@ -114,20 +121,7 @@ function countLetters(text) {
             }
         }
     }
-    // console.table(sortJSONByValue(counts))
-    return sortJSONByValue(counts)
-}
-
-
-function sortJSONByValue(obj) {
-    // const sortedObj = Object.entries(obj)
-    //     .sort((a, b) => b[1] - a[1])
-    //     .reduce((acc, [key, value]) => {
-    //         acc[key] = value
-    //         return acc
-    //     }, {})
-
-    // return sortedObj
+    return counts
 }
 
 
@@ -245,7 +239,7 @@ function ceaserCipherEncrypt2(text, key) {
 }
 
 function ceaserCipherEncrypt(text, shift) {
-    text = turkishToLatin(text)
+    // text = turkishToLatin(text)
     if (shift < 0 || shift > 126) shift = (shift + 94) % 94
     let result = ""
     for (let i = 0; i < text.length; i++) {
