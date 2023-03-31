@@ -17,6 +17,17 @@ h2 {
     font-size: 20px;
 }
 
+textarea {
+  resize: none;
+  border: 3px solid #ff8a00;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+textarea:hover {
+    border: 3px solid #e52e71;
+}
+
 button {
 	background-color: #ff8a00;
     border: none;
@@ -30,19 +41,14 @@ button:hover {
     background-color: #e52e71;
 }
 
-textarea {
-  resize: none;
-  border: 3px solid #ff8a00;
-  border-radius: 10px;
-  padding: 10px;
-}
 
-textarea:hover {
-    border: 3px solid #e52e71;
-}
 
-/* info butonm */
 
+
+
+/** ------------------------------------------------------------------
+  * analiz popupı içün
+  */
 .text-area {
   position: relative;
 }
@@ -81,6 +87,7 @@ textarea:hover {
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  word-wrap: break-word;
 }
 
 .info-button:hover .info-popup {
@@ -102,16 +109,9 @@ textarea:hover {
 
 
 
-
-
-
-
-
-
-
-
-
-/* Arka plan içün */
+/** ------------------------------------------------------------------
+  * Arka plan içün
+  */
 body {
     height: 100vh;
     background: linear-gradient(90deg, #e52e71, #ff8a00);
@@ -166,9 +166,3 @@ body {
     }
 }
 
-.centered {
-    position: fixed;
-    /* or absolute */
-    top: 50%;
-    left: 50%;
-}

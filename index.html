@@ -5,6 +5,8 @@
 	<title>Ceaser Cipher</title>
 	<link rel="stylesheet" href="css/styles.css" />
 	<script src="js/main.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 	<!-- <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
@@ -20,64 +22,58 @@
 	<div class="slider-thumb"></div>
 
 	<h1>Ceaser Cipher</h1>
-	
+
 	<div class="text-area">
 		<div class="info-button">
 			<div class="info-icon">
 				<span>i</span>
 			</div>
-		<div id="infoRaw" class="info-popup">kaskjdnakjsndajs<br/>kjnkjnkjn<br/>lıjıjl<br/>lkmlkml<br/>lkmlkml<br/>lkmlkml</div>
-	</div>
-	<textarea id="raw" rows="4" cols="50" placeholder="Sezarlancak metni buraya giriniz."></textarea>
-	</div>
-	
-
-	<button onClick="encode()">
-	<i class="fa fa-arrow-down"></i> ENCODE <i class="fa fa-arrow-down fa-lock"></i>
-	</button>
-
-
-	
-	<div class="text-area">
-		<div class="info-button">
-			<div class="info-icon">
-				<span>i</span>
+			<div id="infoRaw" class="info-popup">Analiz sonucunu burada görebilirsiniz.
+				<canvas id="chartRaw"></canvas>
 			</div>
-		<div id="infoCip" class="info-popup">örnek info</div>
-	</div>
-	<textarea id="ciphered" rows="4" cols="50" placeholder="Sezarlandın"></textarea>
-	</div>
-	
-	<button onClick="decode()">
-	<i class="fa fa-arrow-down"></i> DECODE <i class="fa fa-unlock"></i>
-	</button>
-	
-	<div class="text-area">
-		<div class="info-button">
-			<div class="info-icon">
-				<span>i</span>
-			</div>
-		<div id="infoDec" class="info-popup">Buraya yazmak istediğiniz metni giriniz.</div>
-	</div>
-	<textarea id="decoded" rows="4" cols="50" placeholder="uno"></textarea>
-	</div>
-	
-	
-	<!-- <div class="container-md" id="test-plot">
-		<div class="pulse">
-			<p style='font-family: monospace sans-serif;'><big><big><big><big>PyScript loading and
-								initializing...</big></big></big></big></p>
 		</div>
-		<py-script>
-			import matplotlib.pyplot as plt
-			import numpy as np
-			integers = np.random.randint(0,100,100)
-			fig1,ax1 = plt.subplots(1,1,dpi=150,figsize=(5,2))
-			ax1.hist(integers,bins=20,edgecolor='k',color='blue')
-			ax1.set_title("Histogram of random integers",fontsize=11)
-			pyscript.write('test-plot',fig1)
-		</py-script>
-	</div> -->
+		<textarea id="raw" rows="4" cols="50" placeholder="Sezarlancak metni buraya giriniz."
+			oninput="validateInput(event)"></textarea>
+	</div>
+
+	<textarea id="key" rows="1" cols="50" placeholder="Anahtarı buraya giriniz."></textarea>
+
+	<button onClick="encrypt()">
+		<i class="fa fa-arrow-down"></i> Encrypt <i class="fa fa-arrow-down fa-lock"></i>
+	</button>
+
+
+
+	<div class="text-area">
+		<div class="info-button">
+			<div class="info-icon">
+				<span>i</span>
+			</div>
+			<div id="infoCip" class="info-popup">Analiz sonucunu burada görebilirsiniz.
+				<canvas id="chartCip"></canvas>
+			</div>
+		</div>
+		<textarea id="ciphered" rows="4" cols="50" placeholder="Sezarlandın"></textarea>
+	</div>
+
+	<button onClick="decrypt()">
+		<i class="fa fa-arrow-down"></i> Decrypt <i class="fa fa-unlock"></i>
+	</button>
+
+	<div class="text-area">
+		<div class="info-button">
+			<div class="info-icon">
+				<span>i</span>
+			</div>
+			<div id="infoDec" class="info-popup">Analiz sonucunu burada görebilirsiniz.
+				<canvas id="chartDec"></canvas>
+			</div>
+		</div>
+		<textarea id="decoded" rows="4" cols="50" placeholder="uno"></textarea>
+	</div>
+
+	<h2 id="similarity"></h2>
+
 
 </body>
 
